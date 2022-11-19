@@ -28,11 +28,11 @@ classdef cCompositeArea	%The file-name must be the same as the class-name
         end
         
         function Qy=Qy(oThisCompositeArea)
-            Qy=sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.z_hat]);
+            Qy=sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.z_bar]);
         end
         
         function Qz=Qz(oThisCompositeArea)
-            Qz=sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.y_hat]);
+            Qz=sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.y_bar]);
         end
         
         function y_bar=y_bar(oThisCompositeArea)
@@ -44,15 +44,15 @@ classdef cCompositeArea	%The file-name must be the same as the class-name
         end
         
         function Iy_hat=Iy_hat(oThisCompositeArea)
-            Iy_hat=sum([oThisCompositeArea.oDistantArea_vec.Iy])+sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.z_hat].^2);
+            Iy_hat=sum([oThisCompositeArea.oDistantArea_vec.Iy])+sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.z_bar].^2);
         end
         
         function Iz_hat=Iz_hat(oThisCompositeArea)
-            Iz_hat=sum([oThisCompositeArea.oDistantArea_vec.Iz])+sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.y_hat].^2);
+            Iz_hat=sum([oThisCompositeArea.oDistantArea_vec.Iz])+sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.y_bar].^2);
         end
         
         function Iyz_hat=Iyz_hat(oThisCompositeArea)
-            Iyz_hat=sum([oThisCompositeArea.oDistantArea_vec.Iyz])+sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.y_hat].*[oThisCompositeArea.oDistantArea_vec.z_hat]);
+            Iyz_hat=sum([oThisCompositeArea.oDistantArea_vec.Iyz])+sum([oThisCompositeArea.oDistantArea_vec.A].*[oThisCompositeArea.oDistantArea_vec.y_bar].*[oThisCompositeArea.oDistantArea_vec.z_bar]);
         end
         
         function Iy=Iy(oThisCompositeArea)

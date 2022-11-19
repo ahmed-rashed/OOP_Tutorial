@@ -50,12 +50,12 @@ classdef cArea  %The file-name must be the same as the class-name
             Iy_hat_arr=reshape([oThisObject_arr.Iy]+[oThisObject_arr.A].*z_hat_arr(:).'.^2,size(oThisObject_arr));
         end
         
-        function Iz_hat_arr=Iz_hat(oThisObject_arr,y_hat)
-            Iz_hat_arr=reshape([oThisObject_arr.Iz]+[oThisObject_arr.A].*y_hat(:).'.^2,size(oThisObject_arr));
+        function Iz_hat_arr=Iz_hat(oThisObject_arr,y_bar)
+            Iz_hat_arr=reshape([oThisObject_arr.Iz]+[oThisObject_arr.A].*y_bar(:).'.^2,size(oThisObject_arr));
         end
         
-        function Iyz_hat_arr=Iyz_hat(oThisObject_arr,y_hat,z_hat)
-            Iyz_hat_arr=reshape([oThisObject_arr.Iyz]+[oThisObject_arr.A].*y_hat(:).'.*z_hat(:).',size(oThisObject_arr));
+        function Iyz_hat_arr=Iyz_hat(oThisObject_arr,y_bar,z_bar)
+            Iyz_hat_arr=reshape([oThisObject_arr.Iyz]+[oThisObject_arr.A].*y_bar(:).'.*z_bar(:).',size(oThisObject_arr));
         end
     end
 end

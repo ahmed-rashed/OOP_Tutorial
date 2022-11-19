@@ -26,16 +26,16 @@ classdef cArea_simple	 %The file-name must be the same as the class-name
             end
         end
 
-        function Iy_hat=Iy_hat(oThisObject,z_hat)
-            Iy_hat=oThisObject.Iy+oThisObject.A*z_hat.^2;
+        function Iy_hat=Iy_hat(oThisObject,z_bar)
+            Iy_hat=oThisObject.Iy+oThisObject.A*z_bar.^2;
         end
         
-        function Iz_hat=Iz_hat(oThisObject,y_hat)
-            Iz_hat=oThisObject.Iz+oThisObject.A*y_hat.^2;
+        function Iz_hat=Iz_hat(oThisObject,y_bar)
+            Iz_hat=oThisObject.Iz+oThisObject.A*y_bar.^2;
         end
         
-        function Iyz_hat=Iyz_hat(oThisObject,y_hat,z_hat)
-            Iyz_hat=oThisObject.Iyz+oThisObject.A*y_hat*z_hat;
+        function Iyz_hat=Iyz_hat(oThisObject,y_bar,z_bar)
+            Iyz_hat=oThisObject.Iyz+oThisObject.A*y_bar*z_bar;
         end
     end
 end

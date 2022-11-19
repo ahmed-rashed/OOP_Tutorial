@@ -1,8 +1,8 @@
 classdef cDistantArea < cArea   %The file-name must be the same as the class-name
 %Methods of this class can handle object arrays
     properties
-        y_hat(1,1)  double
-        z_hat(1,1)  double
+        y_bar(1,1)  double
+        z_bar(1,1)  double
     end
 
     methods
@@ -24,24 +24,24 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
                 A_arr_size=size(A_arr);
                 if any(size(y_hat_arr)~=A_arr_size),error('y_hat_arr and A_arr must have identical size.'),end
                 y_hat_carr=num2cell(y_hat_arr);
-                [oThisObject_arr.y_hat]=deal(y_hat_carr{:});
+                [oThisObject_arr.y_bar]=deal(y_hat_carr{:});
     
                 if any(size(z_hat_arr)~=A_arr_size),error('z_hat_arr and A_arr must have identical size.'),end
                 z_hat_carr=num2cell(z_hat_arr);
-                [oThisObject_arr.z_hat]=deal(z_hat_carr{:});
+                [oThisObject_arr.z_bar]=deal(z_hat_carr{:});
             end
         end
 
         function Iy_hat=Iy_hat(oThisObject_arr)
-            Iy_hat=Iy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_hat]); %#ok<NODEF> 
+            Iy_hat=Iy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_bar]); %#ok<NODEF> 
         end
         
         function Iz_hat=Iz_hat(oThisObject_arr)
-            Iz_hat=Iz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_hat]); %#ok<NODEF> 
+            Iz_hat=Iz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar]); %#ok<NODEF> 
         end
         
         function Iyz_hat=Iyz_hat(oThisObject_arr)
-            Iyz_hat=Iyz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_hat],[oThisObject_arr.z_hat]); %#ok<NODEF> 
+            Iyz_hat=Iyz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar],[oThisObject_arr.z_bar]); %#ok<NODEF> 
         end
     end
 end
