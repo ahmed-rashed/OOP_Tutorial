@@ -1,4 +1,4 @@
-classdef cCompositeArea	%The file-name must be the same as the class-name 
+classdef cCmAr	%The file-name must be the same as the class-name 
 
     properties
         oDistantArea_vec(1,:) cDistantArea   %row vector
@@ -6,7 +6,7 @@ classdef cCompositeArea	%The file-name must be the same as the class-name
 
     methods
         % Constructor
-        function oThisCompositeArea=cCompositeArea(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec)
+        function oThisCompositeArea=cCmAr(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec)
             if nargin==6
                 if ~isvector(A_vec),error('A_vec must be a vector');end
                 A_vec_size=size(A_vec);

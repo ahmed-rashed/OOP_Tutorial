@@ -85,4 +85,4 @@ oArea2_arr.Iyz_hat(y_hat_arr,z_hat_arr)
 oDistantArea_arr.Iz_hat
 oDistantArea_arr.Iyz_hat
 
-test_cCompositeArea
+test_cCmAr
