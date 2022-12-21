@@ -13,7 +13,7 @@ classdef cArea  %The file-name must be the same as the class-name
             if nargin>=1
                 A_arr_size=size(A_arr);
                 dims_c=num2cell(A_arr_size);
-                oThisObject_arr(dims_c{:})=oThisObject_arr; %Initialize the object array by assigning its last element
+                oThisObject_arr=repelem(oThisObject_arr,dims_c{:});  %Initialize the object array
 
                 N=numel(A_arr);
                 for n=1:N
