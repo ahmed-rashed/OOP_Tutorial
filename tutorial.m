@@ -38,7 +38,7 @@ class(oDistantArea)
 doc cDistantArea_simple
 matlab.diagram.ClassViewer('Classes',["cArea_simple","cDistantArea_simple"])
 
-
+oArea_arr=repelem(cArea_simple(3.2),2,2)
 
 oArea1_arr(2,2)=cArea_simple(3.2)
 oArea1_arr(2,1)=cArea_simple(1.4)
