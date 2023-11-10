@@ -20,7 +20,7 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
             oThisObject_arr@cArea(superClassArgs{:});
                 
             %Construct the subclass
-            if nargin~=0    %This is needed to create array of this class
+            if nargin~=0
                 A_arr_size=size(A_arr);
                 if any(size(y_hat_arr)~=A_arr_size),error('y_hat_arr and A_arr must have identical size.'),end
                 y_hat_carr=num2cell(y_hat_arr);
