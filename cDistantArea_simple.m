@@ -23,16 +23,16 @@ classdef cDistantArea_simple < cArea_simple   %The file-name must be the same as
             oThisObject.z_bar=z_bar;
         end
 
-        function Iy_hat=Iy_hat(oThisObject)
-            Iy_hat=Iy_hat@cArea_simple(oThisObject,oThisObject.z_bar); %#ok<NODEF> 
+        function Iy_hat=calc_Iy_hat(oThisObject)
+            Iy_hat=calc_Iy_hat@cArea_simple(oThisObject,oThisObject.z_bar);
         end
         
-        function Iz_hat=Iz_hat(oThisObject)
-            Iz_hat=Iz_hat@cArea_simple(oThisObject,oThisObject.y_bar); %#ok<NODEF> 
+        function Iz_hat=calc_Iz_hat(oThisObject)
+            Iz_hat=calc_Iz_hat@cArea_simple(oThisObject,oThisObject.y_bar);
         end
         
-        function Iyz_hat=Iyz_hat(oThisObject)
-            Iyz_hat=Iyz_hat@cArea_simple(oThisObject,oThisObject.y_bar,oThisObject.z_bar); %#ok<NODEF> 
+        function Iyz_hat=calc_Iyz_hat(oThisObject)
+            Iyz_hat=calc_Iyz_hat@cArea_simple(oThisObject,oThisObject.y_bar,oThisObject.z_bar);
         end
     end
 end

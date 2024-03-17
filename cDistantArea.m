@@ -32,16 +32,24 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
             end
         end
 
-        function Iy_hat=Iy_hat(oThisObject_arr)
-            Iy_hat=Iy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_bar]); %#ok<NODEF> 
+        function Qy_hat=calc_Qy_hat(oThisObject_arr)
+            Qy_hat=calc_Qy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_bar]);
+        end
+
+        function Qz_hat=calc_Qz_hat(oThisObject_arr)
+            Qz_hat=calc_Qz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar]);
+        end
+
+        function Iy_hat=calc_Iy_hat(oThisObject_arr)
+            Iy_hat=calc_Iy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_bar]);
         end
         
-        function Iz_hat=Iz_hat(oThisObject_arr)
-            Iz_hat=Iz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar]); %#ok<NODEF> 
+        function Iz_hat=calc_Iz_hat(oThisObject_arr)
+            Iz_hat=calc_Iz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar]);
         end
         
-        function Iyz_hat=Iyz_hat(oThisObject_arr)
-            Iyz_hat=Iyz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar],[oThisObject_arr.z_bar]); %#ok<NODEF> 
+        function Iyz_hat=calc_Iyz_hat(oThisObject_arr)
+            Iyz_hat=calc_Iyz_hat@cArea(oThisObject_arr,[oThisObject_arr.y_bar],[oThisObject_arr.z_bar]);
         end
     end
 end

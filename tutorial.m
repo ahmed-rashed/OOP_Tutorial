@@ -10,22 +10,22 @@ oArea=cArea_simple(1,2,3,4)
 
 oArea.A
 oArea.A=8
-Iz_hat(oArea,5)
-oArea.Iz_hat(5)
-oArea.Iy_hat(6)
-oArea.Iyz_hat(5,6)
+calc_Iz_hat(oArea,5)
+oArea.calc_Iz_hat(5)
+oArea.calc_Iy_hat(6)
+oArea.calc_Iyz_hat(5,6)
 
 
 
 
 oArea=cArea_simple(1,2,3,4)
-oArea.Iz_hat(5)
-oArea.Iy_hat(6)
-oArea.Iyz_hat(5,6)
+oArea.calc_Iz_hat(5)
+oArea.calc_Iy_hat(6)
+oArea.calc_Iyz_hat(5,6)
 oDistantArea=cDistantArea_simple(1,2,3,4,5,6)
-oDistantArea.Iz_hat
-oDistantArea.Iy_hat
-oDistantArea.Iyz_hat
+oDistantArea.calc_Iz_hat
+oDistantArea.calc_Iy_hat
+oDistantArea.calc_Iyz_hat
 
 
 isa(oDistantArea,'cArea_simple')
@@ -76,13 +76,12 @@ y_hat_arr=[1,2,3;4,5,6]
 z_hat_arr=[7,8,9;10,11,12]
 oDistantArea_arr=cDistantArea(A_arr,Iy_arr,Iz_arr,Iyz_arr,y_hat_arr,z_hat_arr)
 
-oArea2_arr.Iz_hat(5)
-oArea2_arr.Iz_hat(y_hat_arr)
+oArea2_arr.calc_Iz_hat(5)
+oArea2_arr.calc_Iz_hat(y_hat_arr)
+oDistantArea_arr.calc_Iz_hat
 
-oArea2_arr.Iyz_hat(5,6)
-oArea2_arr.Iyz_hat(y_hat_arr,z_hat_arr)
-
-oDistantArea_arr.Iz_hat
-oDistantArea_arr.Iyz_hat
+oArea2_arr.calc_Iyz_hat(5,6)
+oArea2_arr.calc_Iyz_hat(y_hat_arr,z_hat_arr)
+oDistantArea_arr.calc_Iyz_hat
 
 test_cCmAr
