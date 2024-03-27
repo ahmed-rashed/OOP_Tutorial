@@ -1,4 +1,3 @@
-clc
 clearvars
 
 % All properties are in mm
@@ -15,15 +14,7 @@ Iyz_vec=[Iyz1,Iyz2,-Iyz1,Iyz4,-Iyz1,-Iyz2,Iyz1];
 y_hat_vec=[y1,y2,-y1,y4,y1,-y2,-y1];
 z_hat_vec=[z1,z2,z1,z4,-z1,-z2,-z1];
 
-oSec1=cCmAr(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec);
-
-A=oSec1.A %#ok<*NASGU,*NOPTS> 
-y_bar=oSec1.y_bar
-z_bar=oSec1.z_bar
-Iy=oSec1.Iy
-Iz=oSec1.Iz
-Iyz=oSec1.Iyz
-
+oSec1=cCmAr(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec)
 
 % Problem 1.2-f
 % Dimensions are in mm
@@ -34,11 +25,6 @@ Iz_vec1=Iz_vec(ind_vec);
 Iyz_vec1=Iyz_vec(ind_vec);
 y_hat_vec1=y_hat_vec(ind_vec);
 z_hat_vec1=z_hat_vec(ind_vec);
-oSec2=cCmAr(A_vec1,Iy_vec1,Iz_vec1,Iyz_vec1,y_hat_vec1,z_hat_vec1);
+oSec2=cCmAr(A_vec1,Iy_vec1,Iz_vec1,Iyz_vec1,y_hat_vec1,z_hat_vec1)
 
 A=oSec2.A %#ok<*NOPTS> 
-y_bar=oSec2.y_bar
-z_bar=oSec2.z_bar
-Iy=oSec2.Iy
-Iz=oSec2.Iz
-Iyz=oSec2.Iyz

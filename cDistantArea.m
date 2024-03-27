@@ -18,14 +18,14 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
 
             %Construct the superclass
             oThisObject_arr@cArea(superClassArgs{:});
-                
+
             %Construct the subclass
             if nargin~=0
                 A_arr_size=size(A_arr);
                 if any(size(y_hat_arr)~=A_arr_size),error('y_hat_arr and A_arr must have identical size.'),end
                 y_hat_carr=num2cell(y_hat_arr);
                 [oThisObject_arr.y_bar]=deal(y_hat_carr{:});
-    
+
                 if any(size(z_hat_arr)~=A_arr_size),error('z_hat_arr and A_arr must have identical size.'),end
                 z_hat_carr=num2cell(z_hat_arr);
                 [oThisObject_arr.z_bar]=deal(z_hat_carr{:});
@@ -33,7 +33,7 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
         end
 
         function Qy_hat=calc_Qy_hat(oThisObject_arr)
-            Qy_hat=calc_Qy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_bar]);
+            Qy_hat=calc_Qy_hat@cArea(oThisObject_arr,[oThisObject_arr.z_bar]); %#ok<*NODEF> 
         end
 
         function Qz_hat=calc_Qz_hat(oThisObject_arr)

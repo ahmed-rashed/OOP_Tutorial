@@ -26,6 +26,14 @@ classdef cArea_simple	 %The file-name must be the same as the class-name
             end
         end
 
+        function Qy_hat=calc_Qy_hat(oThisObject_arr,z_bar)
+            Qy_hat=oThisObject_arr.A.*z_bar;
+        end
+        
+        function Qz_hat=calc_Qz_hat(oThisObject_arr,y_bar)
+            Qz_hat=oThisObject_arr.A.*y_bar;
+        end
+        
         function Iy_hat=calc_Iy_hat(oThisObject,z_bar)
             Iy_hat=oThisObject.Iy+oThisObject.A*z_bar.^2;
         end

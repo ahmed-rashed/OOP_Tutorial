@@ -46,24 +46,24 @@ classdef cArea < cMoreMethods_Abst  %The file-name must be the same as the class
             end
         end
 
-        function Qy_hat_arr=calc_Qy_hat(oThisObject_arr,z_hat_arr)
-            Qy_hat_arr=reshape([oThisObject_arr.A].*z_hat_arr(:).',size(oThisObject_arr));
+        function Qy_hat_arr=calc_Qy_hat(oThisObject_arr,z_bar_arr)
+            Qy_hat_arr=reshape([oThisObject_arr.A].*z_bar_arr(:).',size(oThisObject_arr));
         end
         
-        function Qz_hat_arr=calc_Qz_hat(oThisObject_arr,y_hat_arr)
-            Qz_hat_arr=reshape([oThisObject_arr.A].*y_hat_arr(:).',size(oThisObject_arr));
+        function Qz_hat_arr=calc_Qz_hat(oThisObject_arr,y_bar_arr)
+            Qz_hat_arr=reshape([oThisObject_arr.A].*y_bar_arr(:).',size(oThisObject_arr));
         end
         
-        function Iy_hat_arr=calc_Iy_hat(oThisObject_arr,z_hat_arr)
-            Iy_hat_arr=reshape([oThisObject_arr.Iy]+[oThisObject_arr.A].*z_hat_arr(:).'.^2,size(oThisObject_arr));
+        function Iy_hat_arr=calc_Iy_hat(oThisObject_arr,z_bar_arr)
+            Iy_hat_arr=reshape([oThisObject_arr.Iy]+[oThisObject_arr.A].*z_bar_arr(:).'.^2,size(oThisObject_arr));
         end
         
-        function Iz_hat_arr=calc_Iz_hat(oThisObject_arr,y_bar)
-            Iz_hat_arr=reshape([oThisObject_arr.Iz]+[oThisObject_arr.A].*y_bar(:).'.^2,size(oThisObject_arr));
+        function Iz_hat_arr=calc_Iz_hat(oThisObject_arr,y_bar_arr)
+            Iz_hat_arr=reshape([oThisObject_arr.Iz]+[oThisObject_arr.A].*y_bar_arr(:).'.^2,size(oThisObject_arr));
         end
         
-        function Iyz_hat_arr=calc_Iyz_hat(oThisObject_arr,y_bar,z_bar)
-            Iyz_hat_arr=reshape([oThisObject_arr.Iyz]+[oThisObject_arr.A].*y_bar(:).'.*z_bar(:).',size(oThisObject_arr));
+        function Iyz_hat_arr=calc_Iyz_hat(oThisObject_arr,y_bar_arr,z_bar_arr)
+            Iyz_hat_arr=reshape([oThisObject_arr.Iyz]+[oThisObject_arr.A].*y_bar_arr(:).'.*z_bar_arr(:).',size(oThisObject_arr));
         end
     end
 end

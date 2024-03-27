@@ -1,7 +1,7 @@
-classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name 
+classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
 
     properties
-        oDistantArea_vec(1,:) cDistantArea   %row vector
+        oCentroidalSubAreas_vec(1,:) cDistantArea   %row vector
     end
 
     methods
@@ -20,65 +20,69 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
                 if any(size(z_hat_vec)~=A_vec_size),error('A_vec and z_hat_vec must have the same size'),end
 
                 % Assign subclass properties
-                oThisCompositeArea.oDistantArea_vec=cDistantArea(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec);  % Superclass properties depend on "oDistantArea_vec" subclass property
+                oThisCompositeArea.oCentroidalSubAreas_vec=cDistantArea(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec);  % Superclass properties depend on "oCentroidalSubAreas_vec" subclass property
 
                 % Modify superclass properties
-                oThisCompositeArea.A=oThisCompositeArea.calc_A; % "A" must be assigned before "y_bar", "z_bar", "Iy", "Iz" & "Iyz"
-                oThisCompositeArea.y_bar=oThisCompositeArea.calc_y_bar;  % "y_bar" must be assigned before "Iy", "Iz" & "Iyz"
-                oThisCompositeArea.z_bar=oThisCompositeArea.calc_z_bar;  % "z_bar" must be assigned before "Iy", "Iz" & "Iyz"
+                oThisCompositeArea.A=oThisCompositeArea.calc_A_initially; % "A" must be assigned before "y_bar", "z_bar", "Iy", "Iz" & "Iyz"
+                oThisCompositeArea.y_bar=oThisCompositeArea.calc_y_bar_initially;  % "y_bar" must be assigned before "Iy", "Iz" & "Iyz"
+                oThisCompositeArea.z_bar=oThisCompositeArea.calc_z_bar_initially;  % "z_bar" must be assigned before "Iy", "Iz" & "Iyz"
 
-                oThisCompositeArea.Iy=oThisCompositeArea.calc_Iy;
-                oThisCompositeArea.Iz=oThisCompositeArea.calc_Iz;
-                oThisCompositeArea.Iyz=oThisCompositeArea.calc_Iyz;
+                y_cvec=num2cell(oThisCompositeArea.calc_y_initially);
+                [oThisCompositeArea.oCentroidalSubAreas_vec.y_bar]=y_cvec{:};
+
+                z_cvec=num2cell(oThisCompositeArea.calc_z_initially);
+                [oThisCompositeArea.oCentroidalSubAreas_vec.z_bar]=z_cvec{:};
+
+                oThisCompositeArea.Iy=oThisCompositeArea.calc_Iy_initially;
+                oThisCompositeArea.Iz=oThisCompositeArea.calc_Iz_initially;
+                oThisCompositeArea.Iyz=oThisCompositeArea.calc_Iyz_initially;
             elseif nargin ~= 0
                 error('This class can be constructed using zero or 6 inputs.');
             end
         end
-
-        function Qy_hat=calc_Qy_hat(oThisCompositeArea)
-            Qy_hat=sum(calc_Qy_hat@cDistantArea(oThisCompositeArea.oDistantArea_vec));
-        end
-        
-        function Qz_hat=calc_Qz_hat(oThisCompositeArea)
-            Qz_hat=sum(calc_Qz_hat@cDistantArea(oThisCompositeArea.oDistantArea_vec));
-        end
-        
-        function Iy_hat=calc_Iy_hat(oThisCompositeArea)
-            Iy_hat=sum(calc_Iy_hat@cDistantArea(oThisCompositeArea.oDistantArea_vec));
-        end
-        
-        function Iz_hat=calc_Iz_hat(oThisCompositeArea)
-            Iz_hat=sum(calc_Iz_hat@cDistantArea(oThisCompositeArea.oDistantArea_vec));
-        end
-        
-        function Iyz_hat=calc_Iyz_hat(oThisCompositeArea)
-            Iyz_hat=sum(calc_Iyz_hat@cDistantArea(oThisCompositeArea.oDistantArea_vec));
-        end
     end
 
     methods (Access=protected)
-        function A=calc_A(oThisCompositeArea)
-            A=sum([oThisCompositeArea.oDistantArea_vec.A]);
+        function y_bar=calc_y_bar_initially(oThisCompositeArea)
+            y_bar=oThisCompositeArea.calc_Qz_hat_initially/oThisCompositeArea.A;
         end
-        
-        function y_bar=calc_y_bar(oThisCompositeArea)
-            y_bar=oThisCompositeArea.calc_Qz_hat/oThisCompositeArea.A;
+
+        function z_bar=calc_z_bar_initially(oThisCompositeArea)
+            z_bar=oThisCompositeArea.calc_Qy_hat_initially/oThisCompositeArea.A;
         end
-        
-        function z_bar=calc_z_bar(oThisCompositeArea)
-            z_bar=oThisCompositeArea.calc_Qy_hat/oThisCompositeArea.A;
+
+        function y_row=calc_y_initially(oThisCompositeArea)
+            y_row=[oThisCompositeArea.oCentroidalSubAreas_vec.y_bar]-oThisCompositeArea.y_bar;
         end
-        
-        function Iy=calc_Iy(oThisCompositeArea)
-            Iy=oThisCompositeArea.calc_Iy_hat-oThisCompositeArea.A*oThisCompositeArea.z_bar.^2;
+
+        function z_row=calc_z_initially(oThisCompositeArea)
+            z_row=[oThisCompositeArea.oCentroidalSubAreas_vec.z_bar]-oThisCompositeArea.z_bar;
         end
-        
-        function Iz=calc_Iz(oThisCompositeArea)
-            Iz=oThisCompositeArea.calc_Iz_hat-oThisCompositeArea.A*oThisCompositeArea.y_bar.^2;
+
+        function Iyz=calc_Iyz_initially(oThisCompositeArea)
+            Iyz=sum(oThisCompositeArea.oCentroidalSubAreas_vec.calc_Iyz_hat);
         end
-        
-        function Iyz=calc_Iyz(oThisCompositeArea)
-            Iyz=oThisCompositeArea.calc_Iyz_hat-oThisCompositeArea.A*oThisCompositeArea.y_bar*oThisCompositeArea.z_bar;
+    end
+
+    methods (Access=private)
+        function A=calc_A_initially(oThisCompositeArea)
+            A=sum([oThisCompositeArea.oCentroidalSubAreas_vec.A]);
         end
-    end    
+
+        function Qy_hat=calc_Qy_hat_initially(oThisCompositeArea)
+            Qy_hat=sum(oThisCompositeArea.oCentroidalSubAreas_vec.calc_Qy_hat);
+        end
+
+        function Qz_hat=calc_Qz_hat_initially(oThisCompositeArea)
+            Qz_hat=sum(oThisCompositeArea.oCentroidalSubAreas_vec.calc_Qz_hat);
+        end
+
+        function Iy=calc_Iy_initially(oThisCompositeArea)
+            Iy=sum(oThisCompositeArea.oCentroidalSubAreas_vec.calc_Iy_hat);
+        end
+
+        function Iz=calc_Iz_initially(oThisCompositeArea)
+            Iz=sum(oThisCompositeArea.oCentroidalSubAreas_vec.calc_Iz_hat);
+        end
+    end
 end

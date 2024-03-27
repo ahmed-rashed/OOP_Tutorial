@@ -17,10 +17,18 @@ classdef cDistantArea_simple < cArea_simple   %The file-name must be the same as
 
             %Construct the superclass
             oThisObject@cArea_simple(superClassArgs{:});
-            
+
             %Construct the subclass
             oThisObject.y_bar=y_bar;
             oThisObject.z_bar=z_bar;
+        end
+
+        function Qy_hat=calc_Qy_hat(oThisObject)
+            Qy_hat=calc_Qy_hat@cArea_simple(oThisObject,oThisObject.z_bar);
+        end
+
+        function Qz_hat=calc_Qz_hat(oThisObject)
+            Qz_hat=calc_Qz_hat@cArea_simple(oThisObject,oThisObject.y_bar);
         end
 
         function Iy_hat=calc_Iy_hat(oThisObject)
