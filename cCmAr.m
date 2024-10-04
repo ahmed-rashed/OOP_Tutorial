@@ -6,11 +6,11 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
 
     methods
         % Constructor
-        function oThisCompositeArea=cCmAr(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec)
+        function oThisCompositeArea=cCmAr(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec)
             %Construct the superclass
             oThisCompositeArea@cDistantArea();
 
-            if nargin==6
+            if nargin>=3 && nargin<=6
                 if ~isvector(A_vec),error('A_vec must be a vector');end
                 A_vec_size=size(A_vec);
                 if any(size(Iy_vec)~=A_vec_size),error('A_vec and Iy_vec must have the same size'),end
@@ -20,9 +20,9 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
                 if any(size(z_hat_vec)~=A_vec_size),error('A_vec and z_hat_vec must have the same size'),end
 
                 % Assign subclass properties
-                oThisCompositeArea.oCentroidalSubAreas_vec=cDistantArea(A_vec,Iy_vec,Iz_vec,Iyz_vec,y_hat_vec,z_hat_vec);  % Superclass properties depend on "oCentroidalSubAreas_vec" subclass property
+                oThisCompositeArea.oCentroidalSubAreas_vec=cDistantArea(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec);  % Superclass properties depend on "oCentroidalSubAreas_vec" subclass property
 
-                % Modify superclass properties
+                % Correct superclass properties
                 oThisCompositeArea.A=oThisCompositeArea.calc_A_initially; % "A" must be assigned before "y_bar", "z_bar", "Iy", "Iz" & "Iyz"
                 oThisCompositeArea.y_bar=oThisCompositeArea.calc_y_bar_initially;  % "y_bar" must be assigned before "Iy", "Iz" & "Iyz"
                 oThisCompositeArea.z_bar=oThisCompositeArea.calc_z_bar_initially;  % "z_bar" must be assigned before "Iy", "Iz" & "Iyz"
@@ -37,7 +37,7 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
                 oThisCompositeArea.Iz=oThisCompositeArea.calc_Iz_initially;
                 oThisCompositeArea.Iyz=oThisCompositeArea.calc_Iyz_initially;
             elseif nargin ~= 0
-                error('This class can be constructed using zero or 6 inputs.');
+                error('This class can be constructed using zero or from 3 to 6 inputs.');
             end
         end
     end

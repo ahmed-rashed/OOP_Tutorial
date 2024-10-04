@@ -7,6 +7,7 @@ oArea=cArea_simple(1)
 oArea=cArea_simple(1,2)
 oArea=cArea_simple(1,2,3)
 oArea=cArea_simple(1,2,3,4)
+% oArea=cArea_simple(1,2,3,4,5)
 
 %%
 oArea.A
@@ -76,7 +77,7 @@ oArea2_arr=cArea(A_arr,Iy_arr,Iz_arr)
 Iyz_arr=zeros(2,3)
 y_hat_arr=[1,2,3;4,5,6]
 z_hat_arr=[7,8,9;10,11,12]
-oDistantArea_arr=cDistantArea(A_arr,Iy_arr,Iz_arr,Iyz_arr,y_hat_arr,z_hat_arr)
+oDistantArea_arr=cDistantArea(A_arr,y_hat_arr,z_hat_arr,Iy_arr,Iz_arr,Iyz_arr)
 
 oArea2_arr.calc_Iz_hat(5)
 oArea2_arr.calc_Iz_hat(y_hat_arr)
@@ -86,4 +87,4 @@ oArea2_arr.calc_Iyz_hat(5,6)
 oArea2_arr.calc_Iyz_hat(y_hat_arr,z_hat_arr)
 oDistantArea_arr.calc_Iyz_hat
 
-test_cCmAr
+test_cCmAr_script

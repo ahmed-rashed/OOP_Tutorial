@@ -8,7 +8,8 @@ classdef cArea_simple	 %The file-name must be the same as the class-name
     end
 
     methods
-        function oThisObject=cArea_simple(A,Iy,Iz,Iyz)	% Constructor
+        % Constructor must be named same as the class
+        function oThisObject=cArea_simple(A,Iy,Iz,Iyz)
             if nargin>=1
                 oThisObject.A=A;
             end
@@ -26,12 +27,12 @@ classdef cArea_simple	 %The file-name must be the same as the class-name
             end
         end
 
-        function Qy_hat=calc_Qy_hat(oThisObject_arr,z_bar)
-            Qy_hat=oThisObject_arr.A.*z_bar;
+        function Qy_hat=calc_Qy_hat(oThisObject,z_bar)
+            Qy_hat=oThisObject.A.*z_bar;
         end
         
-        function Qz_hat=calc_Qz_hat(oThisObject_arr,y_bar)
-            Qz_hat=oThisObject_arr.A.*y_bar;
+        function Qz_hat=calc_Qz_hat(oThisObject,y_bar)
+            Qz_hat=oThisObject.A.*y_bar;
         end
         
         function Iy_hat=calc_Iy_hat(oThisObject,z_bar)

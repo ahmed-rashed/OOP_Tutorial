@@ -29,8 +29,32 @@ classdef (Abstract) cMoreMethods_Abst
             alpha1_arr=reshape(atan2(-[oThisObject_arr.Iyz],([oThisObject_arr.Iy]-[oThisObject_arr.Iz])/2),size(oThisObject_arr))/2;
         end
 
+        function alpha2_arr=alpha2(oThisObject_arr)
+            alpha2_arr=oThisObject_arr.alpha1+pi/2;
+        end
+
         function alpha3_arr=alpha3(oThisObject_arr)
             alpha3_arr=pi/4-oThisObject_arr.alpha1;
+        end
+
+        function alpha4_arr=alpha4(oThisObject_arr)
+            alpha4_arr=oThisObject_arr.alpha3+pi/2;
+        end
+
+        function alpha1d_arr=alpha1d(oThisObject_arr)
+            alpha1d_arr=rad2deg(oThisObject_arr.alpha1);
+        end
+
+        function alpha2d_arr=alpha2d(oThisObject_arr)
+            alpha2d_arr=rad2deg(oThisObject_arr.alpha2);
+        end
+
+        function alpha3d_arr=alpha3d(oThisObject_arr)
+            alpha3d_arr=rad2deg(oThisObject_arr.alpha3);
+        end
+
+        function alpha4d_arr=alpha4d(oThisObject_arr)
+            alpha4d_arr=rad2deg(oThisObject_arr.alpha4);
         end
 
         function rho_y_arr=rho_y(oThisObject_arr)

@@ -6,13 +6,22 @@ classdef cDistantArea_simple < cArea_simple   %The file-name must be the same as
     end
 
     methods
-        function oThisObject=cDistantArea_simple(A,Iy,Iz,Iyz,y_bar,z_bar)	% Constructor
+        % Constructor must be named same as the class
+        function oThisObject=cDistantArea_simple(A,y_bar,z_bar,Iy,Iz,Iyz)
             if nargin==0
                 superClassArgs={};
-            elseif nargin==6
-                superClassArgs={A,Iy,Iz,Iyz};
+            elseif nargin>=3 && nargin<=6
+                if nargin==3
+                    superClassArgs={A};
+                elseif nargin==4
+                    superClassArgs={A,Iy};
+                elseif nargin==5
+                    superClassArgs={A,Iy,Iz};
+                elseif nargin==6
+                    superClassArgs={A,Iy,Iz,Iyz};
+                end
             else
-                error('This class can be constructed using zero or 6 inputs.');
+                error('This class can be constructed using zero or from 3 to 6 inputs.');
             end
 
             %Construct the superclass
