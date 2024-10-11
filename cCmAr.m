@@ -6,21 +6,24 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
 
     methods
         % Constructor
-        function oThisCompositeArea=cCmAr(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec)
+        function oThisCompositeArea=cCmAr(A_vec,y_hat_vec,z_hat_vec,varargin)
             %Construct the superclass
             oThisCompositeArea@cDistantArea();
 
             if nargin>=3 && nargin<=6
                 if ~isvector(A_vec),error('A_vec must be a vector');end
                 A_vec_size=size(A_vec);
-                if any(size(Iy_vec)~=A_vec_size),error('A_vec and Iy_vec must have the same size'),end
-                if any(size(Iz_vec)~=A_vec_size),error('A_vec and Iz_vec must have the same size'),end
-                if any(size(Iyz_vec)~=A_vec_size),error('A_vec and Iyz_vec must have the same size'),end
+
                 if any(size(y_hat_vec)~=A_vec_size),error('A_vec and y_hat_vec must have the same size'),end
                 if any(size(z_hat_vec)~=A_vec_size),error('A_vec and z_hat_vec must have the same size'),end
 
+                varargin_names=["Iy_vec","Iz_vec","Iyz_vec"];
+                for n=1:length(varargin)
+                    if any(size(varargin{n})~=A_vec_size),error("A_vec and "+varargin_names(n)+' must have the same size'),end
+                end
+
                 % Assign subclass properties
-                oThisCompositeArea.oCentroidalSubAreas_vec=cDistantArea(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec);  % Superclass properties depend on "oCentroidalSubAreas_vec" subclass property
+                oThisCompositeArea.oCentroidalSubAreas_vec=cDistantArea(A_vec,y_hat_vec,z_hat_vec,varargin{:});  % Superclass properties depend on "oCentroidalSubAreas_vec" subclass property
 
                 % Correct superclass properties
                 oThisCompositeArea.A=oThisCompositeArea.calc_A_initially; % "A" must be assigned before "y_bar", "z_bar", "Iy", "Iz" & "Iyz"

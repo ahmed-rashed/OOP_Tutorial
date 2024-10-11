@@ -7,11 +7,11 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
 
     methods
         % Constructor that can initialize object array
-        function oThisObject_arr=cDistantArea(A_arr,y_hat_arr,z_hat_arr,Iy_arr,Iz_arr,Iyz_arr)
+        function oThisObject_arr=cDistantArea(A_arr,y_hat_arr,z_hat_arr,varargin)
             if nargin==0    %This is needed to create array of this class
                 superClassArgs={};
             elseif nargin>=3 && nargin<=6
-                superClassArgs={A_arr,Iy_arr,Iz_arr,Iyz_arr};
+                superClassArgs=[{A_arr},varargin(:).'];
             else
                 error('This class can be constructed using zero or from 3 to 6 inputs.');
             end
