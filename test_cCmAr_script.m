@@ -8,6 +8,21 @@ A2=2610;Iy2=0.633;Iz2=15;Iyz2=0;y2=0;z2=254/2+7.7-14.1;
 A4=4810;Iy4=51.2;Iz4=2.8;Iyz4=0;y4=0;z4=0;
 
 %%
+% <<../CompositeSection_sol.svg>>
+
+y22=0;z22=254/2+7.7-14.1;
+A5=4740;Iy5=37.9;Iz5=1.39;Iyz5=0;y5=-(73.4/2-15.7);z5=0;
+
+A0_vec=[A2,A5,A2];
+Iy0_vec=[Iy2,Iy5,Iy2];
+Iz0_vec=[Iz2,Iz5,Iz2];
+Iyz0_vec=[Iyz2,Iyz5,-Iyz2];
+y_hat0_vec=[y22,y5,y22];
+z_hat0_vec=[z22,z5,-z22];
+
+oSec0=cCmAr(A0_vec,y_hat0_vec,z_hat0_vec,Iy0_vec,Iz0_vec,Iyz0_vec) %#ok<*NOPTS>
+
+%%
 % <<../DoubleSymm-sol.svg>>
 
 A_vec=[A1,A2,A1,A4,A1,A2,A1];
