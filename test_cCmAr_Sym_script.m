@@ -6,7 +6,7 @@ test_cCmAr_script   % oSec1 and oSec2
 clc
 
 %% cCmAr_Sym_y
-% <<../CompositeSection_sol.svg>>
+% <<../../../../AnalysisOfStructures-II/Lectures/CompositeSection_sol.svg>>
 
 disp(["Testing class cCmAr_Sym_y";"==========================================="])
 ind_vec=1:2;
@@ -25,7 +25,7 @@ Iz_err=oSec0.Iz-oSec_Sym.Iz
 Iyz_err=oSec0.Iyz-oSec_Sym.Iyz
 
 %% Symmetric classes
-% <<../DoubleSymm-sol.svg>>
+% <<../../../../AnalysisOfStructures-II/Lectures/DoubleSymm-sol.svg>>
 
 cSym_CompositeArea_cvec={@(a,b,c,d,e,f) (cCmAr_Sym_y(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_z(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_yz_simple(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_yz(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_ASym_z(a,b,c,d,e,f))};
 className_str_vec=["cCmAr_Sym_y","cCmAr_Sym_z","cCmAr_Sym_yz_simple","cCmAr_Sym_yz","cCmAr_ASym_z"];
@@ -54,7 +54,7 @@ for ii=1:length(indSym_cVec)-1
 end
 
 %% Anti-Symmetric classes
-% <<../AntiSymm.svg>>
+% <<../../../../AnalysisOfStructures-II/Lectures/AntiSymm.svg>>
 
 ii=length(indSym_cVec);
 disp(["Testing class "+className_str_vec(ii);"==========================================="])

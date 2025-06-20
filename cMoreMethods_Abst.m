@@ -1,8 +1,8 @@
 classdef (Abstract) cMoreMethods_Abst
-
+    %#ok<*MCNPN> 
     methods
         function Ip_arr=Ip(oThisObject_arr)
-            Ip_arr=reshape([oThisObject_arr.Iy]+[oThisObject_arr.Iz],size(oThisObject_arr)); %#ok<*MCNPN> 
+            Ip_arr=reshape([oThisObject_arr.Iy]+[oThisObject_arr.Iz],size(oThisObject_arr));
         end
 
         function I34_arr=I34(oThisObject_arr)

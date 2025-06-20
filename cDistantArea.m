@@ -13,13 +13,13 @@ classdef cDistantArea < cArea   %The file-name must be the same as the class-nam
             elseif nargin>=3 && nargin<=6
                 superClassArgs=[{A_arr},varargin(:).'];
             else
-                error('This class can be constructed using zero or from 3 to 6 inputs.');
+                error('This class can be constructed using zero or from 3 to 6 inputs!');
             end
 
             %Construct the superclass
             oThisObject_arr@cArea(superClassArgs{:});
 
-            %Construct the subclass
+            % Assign subclass properties
             if nargin~=0
                 A_arr_size=size(A_arr);
                 if any(size(y_hat_arr)~=A_arr_size),error('y_hat_arr and A_arr must have identical size.'),end

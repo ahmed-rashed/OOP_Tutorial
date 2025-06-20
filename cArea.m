@@ -12,8 +12,7 @@ classdef cArea < cMoreMethods_Abst  %The file-name must be the same as the class
         function oThisObject_arr=cArea(A_arr,Iy_arr,Iz_arr,Iyz_arr)
             if nargin>=1
                 A_arr_size=size(A_arr);
-                dims_c=num2cell(A_arr_size);
-                oThisObject_arr=repelem(oThisObject_arr,dims_c{:});  %Initialize the object array
+                oThisObject_arr=repmat(oThisObject_arr,A_arr_size);  %Initialize the object array
 
                 N=numel(A_arr);
                 for n=1:N

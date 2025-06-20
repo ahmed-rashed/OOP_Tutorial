@@ -9,7 +9,7 @@ classdef cValueClass
 			oThisClass.prop1=value;
 		end
 
-		%This method will not work as expected
+		%Method will not work as expected
 		function setProp1(oThisClass,value)
 			oThisClass.prop1=value;
 		end

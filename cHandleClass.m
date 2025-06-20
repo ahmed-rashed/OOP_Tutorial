@@ -9,7 +9,7 @@ classdef cHandleClass < handle
 			oThisClass.prop1=value;
 		end
 
-        %This method works as expected
+        %Method works as expected
 		function setProp1(oThisClass,value)
 			oThisClass.prop1=value;
 		end
