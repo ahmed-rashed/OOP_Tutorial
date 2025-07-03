@@ -14,34 +14,32 @@ classdef cArea < cMoreMethods_Abst  %The file-name must be the same as the class
                 A_arr_size=size(A_arr);
                 oThisObject_arr=repmat(oThisObject_arr,A_arr_size);  %Initialize the object array
 
-                N=numel(A_arr);
-                for n=1:N
-                    oThisObject_arr(n).A=A_arr(n);
-                end
-%                 % Or alternatively
-%                 A_carr=num2cell(A_arr);
-%                 [oThisObject_arr.A]=deal(A_carr{:});
+                A_carr=num2cell(A_arr);
+                [oThisObject_arr.A]=deal(A_carr{:});
+
+                % Or alternatively
+                % N=numel(A_arr);
+                % for n=1:N
+                %     oThisObject_arr(n).A=A_arr(n);
+                % end
             end
 
             if nargin>=2
                 if any(size(Iy_arr)~=A_arr_size),error('Iy_arr and A_arr must have identical size.'),end
-                for n=1:N
-                    oThisObject_arr(n).Iy=Iy_arr(n); %#ok<AGROW>
-                end
+                Iy_carr=num2cell(Iy_arr);
+                [oThisObject_arr.Iy]=deal(Iy_carr{:});
             end
 
             if nargin>=3
                 if any(size(Iz_arr)~=A_arr_size),error('Iz_arr and A_arr must have identical size.'),end
-                for n=1:N
-                    oThisObject_arr(n).Iz=Iz_arr(n); %#ok<AGROW>
-                end
+                Iz_carr=num2cell(Iz_arr);
+                [oThisObject_arr.Iz]=deal(Iz_carr{:});
             end
 
             if nargin==4
                 if any(size(Iyz_arr)~=A_arr_size),error('Iyz_arr and A_arr must have identical size.'),end
-                for n=1:N
-                    oThisObject_arr(n).Iyz=Iyz_arr(n); %#ok<AGROW>
-                end
+                Iyz_carr=num2cell(Iyz_arr);
+                [oThisObject_arr.Iyz]=deal(Iyz_carr{:});
             end
         end
 

@@ -1,13 +1,13 @@
 classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
 
     properties
-        oCentroidalAreas_vec(1,:) cDistantArea   %row vector
+        oCentroidalAreas_row(1,:) cDistantArea   % row vector
     end
 
     methods
         % Constructor
         function oThisCmAr=cCmAr(A_vec,y_hat_vec,z_hat_vec,varargin)
-            %Construct the superclass
+            % Construct the superclass
             oThisCmAr@cDistantArea();
 
             if nargin>=3 && nargin<=6
@@ -23,7 +23,7 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
                 end
 
                 % Assign subclass properties
-                oThisCmAr.oCentroidalAreas_vec=cDistantArea(A_vec,y_hat_vec,z_hat_vec,varargin{:});  % Superclass properties depend on "oCentroidalAreas_vec" subclass property
+                oThisCmAr.oCentroidalAreas_row=cDistantArea(A_vec,y_hat_vec,z_hat_vec,varargin{:});  % Superclass properties depend on "oCentroidalAreas_row" subclass property
 
                 % Correct superclass properties
                 oThisCmAr.A=oThisCmAr.calc_A_initially; % "A" must be assigned before "y_bar", "z_bar", "Iy", "Iz" & "Iyz"
@@ -31,10 +31,10 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
                 oThisCmAr.z_bar=oThisCmAr.calc_z_bar_initially;  % "z_bar" must be assigned before "Iy", "Iz" & "Iyz"
 
                 y_cvec=num2cell(oThisCmAr.calc_y_initially);
-                [oThisCmAr.oCentroidalAreas_vec.y_bar]=y_cvec{:};
+                [oThisCmAr.oCentroidalAreas_row.y_bar]=y_cvec{:};
 
                 z_cvec=num2cell(oThisCmAr.calc_z_initially);
-                [oThisCmAr.oCentroidalAreas_vec.z_bar]=z_cvec{:};
+                [oThisCmAr.oCentroidalAreas_row.z_bar]=z_cvec{:};
 
                 oThisCmAr.Iy=oThisCmAr.calc_Iy_initially;
                 oThisCmAr.Iz=oThisCmAr.calc_Iz_initially;
@@ -55,37 +55,37 @@ classdef cCmAr < cDistantArea	%The file-name must be the same as the class-name
         end
 
         function y_row=calc_y_initially(oThisCmAr)
-            y_row=[oThisCmAr.oCentroidalAreas_vec.y_bar]-oThisCmAr.y_bar;
+            y_row=[oThisCmAr.oCentroidalAreas_row.y_bar]-oThisCmAr.y_bar;
         end
 
         function z_row=calc_z_initially(oThisCmAr)
-            z_row=[oThisCmAr.oCentroidalAreas_vec.z_bar]-oThisCmAr.z_bar;
+            z_row=[oThisCmAr.oCentroidalAreas_row.z_bar]-oThisCmAr.z_bar;
         end
 
         function Iyz=calc_Iyz_initially(oThisCmAr)
-            Iyz=sum(oThisCmAr.oCentroidalAreas_vec.calc_Iyz_hat.');
+            Iyz=sum(oThisCmAr.oCentroidalAreas_row.calc_Iyz_hat);
         end
     end
 
     methods (Access=private)
         function A=calc_A_initially(oThisCmAr)
-            A=sum([oThisCmAr.oCentroidalAreas_vec.A]);
+            A=sum([oThisCmAr.oCentroidalAreas_row.A]);
         end
 
         function Qy_hat=calc_Qy_hat_initially(oThisCmAr)
-            Qy_hat=sum(oThisCmAr.oCentroidalAreas_vec.calc_Qy_hat);
+            Qy_hat=sum(oThisCmAr.oCentroidalAreas_row.calc_Qy_hat);
         end
 
         function Qz_hat=calc_Qz_hat_initially(oThisCmAr)
-            Qz_hat=sum(oThisCmAr.oCentroidalAreas_vec.calc_Qz_hat);
+            Qz_hat=sum(oThisCmAr.oCentroidalAreas_row.calc_Qz_hat);
         end
 
         function Iy=calc_Iy_initially(oThisCmAr)
-            Iy=sum(oThisCmAr.oCentroidalAreas_vec.calc_Iy_hat.');
+            Iy=sum(oThisCmAr.oCentroidalAreas_row.calc_Iy_hat);
         end
 
         function Iz=calc_Iz_initially(oThisCmAr)
-            Iz=sum(oThisCmAr.oCentroidalAreas_vec.calc_Iy_hat.');
+            Iz=sum(oThisCmAr.oCentroidalAreas_row.calc_Iz_hat);
         end
     end
 end

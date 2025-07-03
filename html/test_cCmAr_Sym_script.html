@@ -1,0 +1,645 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>test_cCmAr_Sym_script</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-06-19">
+<meta name="DC.source" content="test_cCmAr_Sym_script.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#2">cCmAr_Sym_y</a>
+</li>
+<li>
+<a href="#3">Symmetric classes</a>
+</li>
+<li>
+<a href="#4">Anti-Symmetric classes</a>
+</li>
+</ul>
+</div>
+<pre class="codeinput">clc
+clearvars
+
+test_cCmAr_script   <span class="comment">% oSec1 and oSec2</span>
+
+clc
+</pre>
+<pre class="codeoutput">
+oSec0 = 
+
+  cCmAr with properties:
+
+    oCentroidalAreas_vec: [1&times;3 cDistantArea]
+                   y_bar: -9.9940
+                   z_bar: 0
+                       A: 9960
+                      Iy: 7.5922e+07
+                      Iz: 7.5922e+07
+                     Iyz: 0
+
+
+oSec1 = 
+
+  cCmAr with properties:
+
+    oCentroidalAreas_vec: [1&times;7 cDistantArea]
+                   y_bar: 0
+                   z_bar: 1.8385e-15
+                       A: 15830
+                      Iy: 1.5944e+08
+                      Iz: 1.5944e+08
+                     Iyz: 0
+
+
+oSec2 = 
+
+  cCmAr with properties:
+
+    oCentroidalAreas_vec: [1&times;5 cDistantArea]
+                   y_bar: 0
+                   z_bar: 0
+                       A: 12930
+                      Iy: 1.1768e+08
+                      Iz: 1.1768e+08
+                     Iyz: 4.4857e+07
+
+</pre>
+<h2 id="2">cCmAr_Sym_y</h2>
+<p>
+<img vspace="5" hspace="5" src="../../../../AnalysisOfStructures-II/Lectures/CompositeSection_sol.svg" alt=""> </p>
+<pre class="codeinput">disp([<span class="string">"Testing class cCmAr_Sym_y"</span>;<span class="string">"==========================================="</span>])
+ind_vec=1:2;
+oSec_Sym=cCmAr_Sym_y(A0_vec(ind_vec),y_hat0_vec(ind_vec),z_hat0_vec(ind_vec),Iy0_vec(ind_vec),Iz0_vec(ind_vec),Iyz0_vec(ind_vec));
+
+A_err=oSec0.A-oSec_Sym.A <span class="comment">%#ok&lt;*NASGU,*NOPTS&gt;</span>
+Qy_hat_err=oSec0.calc_Qy_hat-oSec_Sym.calc_Qy_hat
+Qz_hat_err=oSec0.calc_Qz_hat-oSec_Sym.calc_Qz_hat
+y_bar_err=oSec0.y_bar-oSec_Sym.y_bar
+z_bar_err=oSec0.z_bar-oSec_Sym.z_bar
+Iy_hat_err=oSec0.calc_Iy_hat-oSec_Sym.calc_Iy_hat
+Iz_hat_err=oSec0.calc_Iz_hat-oSec_Sym.calc_Iz_hat
+Iyz_hat_err=oSec0.calc_Iyz_hat-oSec_Sym.calc_Iyz_hat
+Iy_err=oSec0.Iy-oSec_Sym.Iy
+Iz_err=oSec0.Iz-oSec_Sym.Iz
+Iyz_err=oSec0.Iyz-oSec_Sym.Iyz
+</pre>
+<pre class="codeoutput">    "Testing class cCmAr_Sym_y"
+    "==========================================="
+
+
+A_err =
+
+     0
+
+
+Qy_hat_err =
+
+     0
+
+
+Qz_hat_err =
+
+     0
+
+
+y_bar_err =
+
+     0
+
+
+z_bar_err =
+
+     0
+
+
+Iy_hat_err =
+
+     0
+
+
+Iz_hat_err =
+
+     0
+
+
+Iyz_hat_err =
+
+     0
+
+
+Iy_err =
+
+     0
+
+
+Iz_err =
+
+     0
+
+
+Iyz_err =
+
+     0
+
+</pre>
+<h2 id="3">Symmetric classes</h2>
+<p>
+<img vspace="5" hspace="5" src="../../../../AnalysisOfStructures-II/Lectures/DoubleSymm-sol.svg" alt=""> </p>
+<pre class="codeinput">cSym_CompositeArea_cvec={@(a,b,c,d,e,f) (cCmAr_Sym_y(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_z(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_yz_simple(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_yz(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_ASym_z(a,b,c,d,e,f))};
+className_str_vec=[<span class="string">"cCmAr_Sym_y"</span>,<span class="string">"cCmAr_Sym_z"</span>,<span class="string">"cCmAr_Sym_yz_simple"</span>,<span class="string">"cCmAr_Sym_yz"</span>,<span class="string">"cCmAr_ASym_z"</span>];
+indSym_cVec={1:4,            <span class="keyword">...</span><span class="comment"> Y Sym</span>
+             [1,2,4,6,7],    <span class="keyword">...</span><span class="comment"> Z Sym</span>
+             [1,2,4],        <span class="keyword">...</span><span class="comment"> YZ Sym</span>
+             [1,2,4]         <span class="keyword">...</span><span class="comment"> YZ Sym</span>
+             [1,2,4,6]};     <span class="comment">% Z Anti Sym</span>
+
+<span class="keyword">for</span> ii=1:length(indSym_cVec)-1
+    disp([<span class="string">"Testing class "</span>+className_str_vec(ii);<span class="string">"==========================================="</span>])
+    ind_vec=indSym_cVec{ii};
+    oSec_Sym=cSym_CompositeArea_cvec{ii}(A_vec(ind_vec),y_hat_vec(ind_vec),z_hat_vec(ind_vec),Iy_vec(ind_vec),Iz_vec(ind_vec),Iyz_vec(ind_vec));
+
+    A_err=oSec1.A-oSec_Sym.A <span class="comment">%#ok&lt;*NASGU,*NOPTS&gt;</span>
+    Qy_hat_err=oSec1.calc_Qy_hat-oSec_Sym.calc_Qy_hat
+    Qz_hat_err=oSec1.calc_Qz_hat-oSec_Sym.calc_Qz_hat
+    y_bar_err=oSec1.y_bar-oSec_Sym.y_bar
+    z_bar_err=oSec1.z_bar-oSec_Sym.z_bar
+    Iy_hat_err=oSec1.calc_Iy_hat-oSec_Sym.calc_Iy_hat
+    Iz_hat_err=oSec1.calc_Iz_hat-oSec_Sym.calc_Iz_hat
+    Iyz_hat_err=oSec1.calc_Iyz_hat-oSec_Sym.calc_Iyz_hat
+    Iy_err=oSec1.Iy-oSec_Sym.Iy
+    Iz_err=oSec1.Iz-oSec_Sym.Iz
+    Iyz_err=oSec1.Iyz-oSec_Sym.Iyz
+<span class="keyword">end</span>
+</pre>
+<pre class="codeoutput">    "Testing class cCmAr_Sym_y"
+    "==========================================="
+
+
+A_err =
+
+     0
+
+
+Qy_hat_err =
+
+   2.9104e-11
+
+
+Qz_hat_err =
+
+     0
+
+
+y_bar_err =
+
+     0
+
+
+z_bar_err =
+
+   1.8385e-15
+
+
+Iy_hat_err =
+
+   2.9802e-08
+
+
+Iz_hat_err =
+
+   2.9802e-08
+
+
+Iyz_hat_err =
+
+     0
+
+
+Iy_err =
+
+   2.9802e-08
+
+
+Iz_err =
+
+   2.9802e-08
+
+
+Iyz_err =
+
+     0
+
+    "Testing class cCmAr_Sym_z"
+    "==========================================="
+
+
+A_err =
+
+     0
+
+
+Qy_hat_err =
+
+  -2.9104e-11
+
+
+Qz_hat_err =
+
+     0
+
+
+y_bar_err =
+
+     0
+
+
+z_bar_err =
+
+  -1.8385e-15
+
+
+Iy_hat_err =
+
+     0
+
+
+Iz_hat_err =
+
+     0
+
+
+Iyz_hat_err =
+
+     0
+
+
+Iy_err =
+
+     0
+
+
+Iz_err =
+
+     0
+
+
+Iyz_err =
+
+     0
+
+    "Testing class cCmAr_Sym_yz_simple"
+    "==========================================="
+
+
+A_err =
+
+     0
+
+
+Qy_hat_err =
+
+   2.9104e-11
+
+
+Qz_hat_err =
+
+     0
+
+
+y_bar_err =
+
+     0
+
+
+z_bar_err =
+
+   1.8385e-15
+
+
+Iy_hat_err =
+
+   2.9802e-08
+
+
+Iz_hat_err =
+
+   2.9802e-08
+
+
+Iyz_hat_err =
+
+     0
+
+
+Iy_err =
+
+   2.9802e-08
+
+
+Iz_err =
+
+   2.9802e-08
+
+
+Iyz_err =
+
+     0
+
+    "Testing class cCmAr_Sym_yz"
+    "==========================================="
+
+
+A_err =
+
+     0
+
+
+Qy_hat_err =
+
+   2.9104e-11
+
+
+Qz_hat_err =
+
+     0
+
+
+y_bar_err =
+
+     0
+
+
+z_bar_err =
+
+   1.8385e-15
+
+
+Iy_hat_err =
+
+   2.9802e-08
+
+
+Iz_hat_err =
+
+   2.9802e-08
+
+
+Iyz_hat_err =
+
+     0
+
+
+Iy_err =
+
+   2.9802e-08
+
+
+Iz_err =
+
+   2.9802e-08
+
+
+Iyz_err =
+
+     0
+
+</pre>
+<h2 id="4">Anti-Symmetric classes</h2>
+<p>
+<img vspace="5" hspace="5" src="../../../../AnalysisOfStructures-II/Lectures/AntiSymm.svg" alt=""> </p>
+<pre class="codeinput">ii=length(indSym_cVec);
+disp([<span class="string">"Testing class "</span>+className_str_vec(ii);<span class="string">"==========================================="</span>])
+ind_vec=indSym_cVec{ii};
+oSec_A_Sym=cSym_CompositeArea_cvec{ii}(A_vec(ind_vec),y_hat_vec(ind_vec),z_hat_vec(ind_vec),Iy_vec(ind_vec),Iz_vec(ind_vec),Iyz_vec(ind_vec));
+
+A_err=oSec2.A-oSec_A_Sym.A
+Qy_hat_err=oSec2.calc_Qy_hat-oSec_A_Sym.calc_Qy_hat
+Qz_hat_err=oSec2.calc_Qz_hat-oSec_A_Sym.calc_Qz_hat
+y_bar_err=oSec2.y_bar-oSec_A_Sym.y_bar
+z_bar_err=oSec2.z_bar-oSec_A_Sym.z_bar
+Iy_hat_err=oSec2.calc_Iy_hat-oSec_A_Sym.calc_Iy_hat
+Iz_hat_err=oSec2.calc_Iz_hat-oSec_A_Sym.calc_Iz_hat
+Iyz_hat_err=oSec2.calc_Iyz_hat-oSec_A_Sym.calc_Iyz_hat
+Iy_err=oSec2.Iy-oSec_A_Sym.Iy
+Iz_err=oSec2.Iz-oSec_A_Sym.Iz
+Iyz_err=oSec2.Iyz-oSec_A_Sym.Iyz
+</pre>
+<pre class="codeoutput">    "Testing class cCmAr_ASym_z"
+    "==========================================="
+
+
+A_err =
+
+     0
+
+
+Qy_hat_err =
+
+     0
+
+
+Qz_hat_err =
+
+     0
+
+
+y_bar_err =
+
+     0
+
+
+z_bar_err =
+
+     0
+
+
+Iy_hat_err =
+
+     0
+
+
+Iz_hat_err =
+
+     0
+
+
+Iyz_hat_err =
+
+     0
+
+
+Iy_err =
+
+     0
+
+
+Iz_err =
+
+     0
+
+
+Iyz_err =
+
+     0
+
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+clc
+clearvars
+
+test_cCmAr_script   % oSec1 and oSec2
+
+clc
+
+%% cCmAr_Sym_y
+% <<../../../../AnalysisOfStructures-II/Lectures/CompositeSection_sol.svg>>
+
+disp(["Testing class cCmAr_Sym_y";"==========================================="])
+ind_vec=1:2;
+oSec_Sym=cCmAr_Sym_y(A0_vec(ind_vec),y_hat0_vec(ind_vec),z_hat0_vec(ind_vec),Iy0_vec(ind_vec),Iz0_vec(ind_vec),Iyz0_vec(ind_vec));
+
+A_err=oSec0.A-oSec_Sym.A %#ok<*NASGU,*NOPTS>
+Qy_hat_err=oSec0.calc_Qy_hat-oSec_Sym.calc_Qy_hat
+Qz_hat_err=oSec0.calc_Qz_hat-oSec_Sym.calc_Qz_hat
+y_bar_err=oSec0.y_bar-oSec_Sym.y_bar
+z_bar_err=oSec0.z_bar-oSec_Sym.z_bar
+Iy_hat_err=oSec0.calc_Iy_hat-oSec_Sym.calc_Iy_hat
+Iz_hat_err=oSec0.calc_Iz_hat-oSec_Sym.calc_Iz_hat
+Iyz_hat_err=oSec0.calc_Iyz_hat-oSec_Sym.calc_Iyz_hat
+Iy_err=oSec0.Iy-oSec_Sym.Iy
+Iz_err=oSec0.Iz-oSec_Sym.Iz
+Iyz_err=oSec0.Iyz-oSec_Sym.Iyz
+
+%% Symmetric classes
+% <<../../../../AnalysisOfStructures-II/Lectures/DoubleSymm-sol.svg>>
+
+cSym_CompositeArea_cvec={@(a,b,c,d,e,f) (cCmAr_Sym_y(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_z(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_yz_simple(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_Sym_yz(a,b,c,d,e,f)),@(a,b,c,d,e,f) (cCmAr_ASym_z(a,b,c,d,e,f))};
+className_str_vec=["cCmAr_Sym_y","cCmAr_Sym_z","cCmAr_Sym_yz_simple","cCmAr_Sym_yz","cCmAr_ASym_z"];
+indSym_cVec={1:4,            ... Y Sym
+             [1,2,4,6,7],    ... Z Sym
+             [1,2,4],        ... YZ Sym
+             [1,2,4]         ... YZ Sym
+             [1,2,4,6]};     % Z Anti Sym
+
+for ii=1:length(indSym_cVec)-1
+    disp(["Testing class "+className_str_vec(ii);"==========================================="])
+    ind_vec=indSym_cVec{ii};
+    oSec_Sym=cSym_CompositeArea_cvec{ii}(A_vec(ind_vec),y_hat_vec(ind_vec),z_hat_vec(ind_vec),Iy_vec(ind_vec),Iz_vec(ind_vec),Iyz_vec(ind_vec));
+    
+    A_err=oSec1.A-oSec_Sym.A %#ok<*NASGU,*NOPTS>
+    Qy_hat_err=oSec1.calc_Qy_hat-oSec_Sym.calc_Qy_hat
+    Qz_hat_err=oSec1.calc_Qz_hat-oSec_Sym.calc_Qz_hat
+    y_bar_err=oSec1.y_bar-oSec_Sym.y_bar
+    z_bar_err=oSec1.z_bar-oSec_Sym.z_bar
+    Iy_hat_err=oSec1.calc_Iy_hat-oSec_Sym.calc_Iy_hat
+    Iz_hat_err=oSec1.calc_Iz_hat-oSec_Sym.calc_Iz_hat
+    Iyz_hat_err=oSec1.calc_Iyz_hat-oSec_Sym.calc_Iyz_hat
+    Iy_err=oSec1.Iy-oSec_Sym.Iy
+    Iz_err=oSec1.Iz-oSec_Sym.Iz
+    Iyz_err=oSec1.Iyz-oSec_Sym.Iyz
+end
+
+%% Anti-Symmetric classes
+% <<../../../../AnalysisOfStructures-II/Lectures/AntiSymm.svg>>
+
+ii=length(indSym_cVec);
+disp(["Testing class "+className_str_vec(ii);"==========================================="])
+ind_vec=indSym_cVec{ii};
+oSec_A_Sym=cSym_CompositeArea_cvec{ii}(A_vec(ind_vec),y_hat_vec(ind_vec),z_hat_vec(ind_vec),Iy_vec(ind_vec),Iz_vec(ind_vec),Iyz_vec(ind_vec));
+
+A_err=oSec2.A-oSec_A_Sym.A
+Qy_hat_err=oSec2.calc_Qy_hat-oSec_A_Sym.calc_Qy_hat
+Qz_hat_err=oSec2.calc_Qz_hat-oSec_A_Sym.calc_Qz_hat
+y_bar_err=oSec2.y_bar-oSec_A_Sym.y_bar
+z_bar_err=oSec2.z_bar-oSec_A_Sym.z_bar
+Iy_hat_err=oSec2.calc_Iy_hat-oSec_A_Sym.calc_Iy_hat
+Iz_hat_err=oSec2.calc_Iz_hat-oSec_A_Sym.calc_Iz_hat
+Iyz_hat_err=oSec2.calc_Iyz_hat-oSec_A_Sym.calc_Iyz_hat
+Iy_err=oSec2.Iy-oSec_A_Sym.Iy
+Iz_err=oSec2.Iz-oSec_A_Sym.Iz
+Iyz_err=oSec2.Iyz-oSec_A_Sym.Iyz
+
+##### SOURCE END #####
+-->
+</body>
+</html>

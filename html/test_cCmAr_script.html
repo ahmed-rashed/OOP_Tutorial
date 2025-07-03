@@ -7,9 +7,9 @@ This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
       -->
 <title>test_cCmAr_script</title>
-<meta name="generator" content="MATLAB 24.1">
+<meta name="generator" content="MATLAB 24.2">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2024-10-17">
+<meta name="DC.date" content="2025-07-03">
 <meta name="DC.source" content="test_cCmAr_script.m">
 <style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
@@ -76,25 +76,12 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 </head>
 <body>
 <div class="content">
-<h2>Contents</h2>
-<div>
-<ul>
-<li>
-<a href="#2">Example 5 (double symmetric cross-section)</a>
-</li>
-</ul>
-</div>
 <pre class="codeinput">clearvars
 
-<span class="comment">% All properties are in mm</span>
-</pre>
-<h2 id="2">Example 5 (double symmetric cross-section)</h2>
-<pre class="codeinput">A1=1450;Iy1=0.278;Iz1=0.799;Iyz1=-tan(2*(atan(.413)+pi/2))*(Iy1-Iz1)/2;y1=(203/2+27.4);z1=(254/2+7.7-14.7);
-A2=2610;Iy2=0.633;Iz2=15;Iyz2=0;y2=0;z2=254/2+7.7-14.1;
-A4=4810;Iy4=51.2;Iz4=2.8;Iyz4=0;y4=0;z4=0;
+componentProperties_script  <span class="comment">% Basic areas</span>
 </pre>
 <p>
-<img vspace="5" hspace="5" src="../CompositeSection_sol.svg" alt=""> </p>
+<img vspace="5" hspace="5" src="../../../../AnalysisOfStructures-II/Lectures/DoubleSymm-sol.svg" alt=""> </p>
 <pre class="codeinput">A_vec=[A1,A2,A1,A4,A1,A2,A1];
 Iy_vec=[Iy1,Iy2,Iy1,Iy4,Iy1,Iy2,Iy1];
 Iz_vec=[Iz1,Iz2,Iz1,Iz4,Iz1,Iz2,Iz1];
@@ -109,42 +96,45 @@ oSec1 =
 
   cCmAr with properties:
 
-    oCentroidalSubAreas_vec: [1&times;7 cDistantArea]
-                      y_bar: 0
-                      z_bar: 1.8385e-15
-                          A: 15830
-                         Iy: 1.5944e+08
-                         Iz: 9.6368e+07
-                        Iyz: 0
+    oCentroidalAreas_row: [1&times;7 cDistantArea]
+                   y_bar: 0
+                   z_bar: 1.8385e-15
+                       A: 15830
+                      Iy: 1.5944e+08
+                      Iz: 9.6368e+07
+                     Iyz: 0
 
 </pre>
 <p>
-<img vspace="5" hspace="5" src="../DoubleSymm-sol.svg" alt=""> </p>
-<pre class="codeinput">A_vec=[A1,A2,A1,A4,A1,A2,A1];
-Iy_vec=[Iy1,Iy2,Iy1,Iy4,Iy1,Iy2,Iy1];
-Iz_vec=[Iz1,Iz2,Iz1,Iz4,Iz1,Iz2,Iz1];
-Iyz_vec=[Iyz1,Iyz2,-Iyz1,Iyz4,Iyz1,-Iyz2,-Iyz1];
-y_hat_vec=[y1,y2,-y1,y4,-y1,y2,y1];
-z_hat_vec=[z1,z2,z1,z4,-z1,-z2,-z1];
+<img vspace="5" hspace="5" src="../../../../AnalysisOfStructures-II/Lectures/CompositeSection_sol.svg" alt=""> </p>
+<pre class="codeinput">y22=0;z22=254/2+7.7-14.1;
+A5=4740;Iy5=37.9;Iz5=1.39;Iyz5=0;y5=-(73.4/2-15.7);z5=0;
 
-oSec1=cCmAr(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec) <span class="comment">%#ok&lt;*NOPTS&gt;</span>
+A0_vec=[A2,A5,A2];
+Iy0_vec=[Iy2,Iy5,Iy2];
+Iz0_vec=[Iz2,Iz5,Iz2];
+Iyz0_vec=[Iyz2,Iyz5,-Iyz2];
+y_hat0_vec=[y22,y5,y22];
+z_hat0_vec=[z22,z5,-z22];
+
+oSec2=cCmAr(A0_vec,y_hat0_vec,z_hat0_vec,Iy0_vec,Iz0_vec,Iyz0_vec) <span class="comment">%#ok&lt;*NOPTS&gt;</span>
 </pre>
 <pre class="codeoutput">
-oSec1 = 
+oSec2 = 
 
   cCmAr with properties:
 
-    oCentroidalSubAreas_vec: [1&times;7 cDistantArea]
-                      y_bar: 0
-                      z_bar: 1.8385e-15
-                          A: 15830
-                         Iy: 1.5944e+08
-                         Iz: 9.6368e+07
-                        Iyz: 0
+    oCentroidalAreas_row: [1&times;3 cDistantArea]
+                   y_bar: -9.9940
+                   z_bar: 0
+                       A: 9960
+                      Iy: 7.5922e+07
+                      Iz: 1.0956e+06
+                     Iyz: 0
 
 </pre>
 <p>
-<img vspace="5" hspace="5" src="../AntiSymm.svg" alt=""> </p>
+<img vspace="5" hspace="5" src="../../../../AnalysisOfStructures-II/Lectures/AntiSymm.svg" alt=""> </p>
 <pre class="codeinput">ind_vec=[1,2,4,5,6];
 A_vec1=A_vec(ind_vec);
 Iy_vec1=Iy_vec(ind_vec);
@@ -152,25 +142,25 @@ Iz_vec1=Iz_vec(ind_vec);
 Iyz_vec1=Iyz_vec(ind_vec);
 y_hat_vec1=y_hat_vec(ind_vec);
 z_hat_vec1=z_hat_vec(ind_vec);
-oSec2=cCmAr(A_vec1,y_hat_vec1,z_hat_vec1,Iy_vec1,Iz_vec1,Iyz_vec1)
+oSec3=cCmAr(A_vec1,y_hat_vec1,z_hat_vec1,Iy_vec1,Iz_vec1,Iyz_vec1)
 </pre>
 <pre class="codeoutput">
-oSec2 = 
+oSec3 = 
 
   cCmAr with properties:
 
-    oCentroidalSubAreas_vec: [1&times;5 cDistantArea]
-                      y_bar: 0
-                      z_bar: 0
-                          A: 12930
-                         Iy: 1.1768e+08
-                         Iz: 4.8184e+07
-                        Iyz: 4.4857e+07
+    oCentroidalAreas_row: [1&times;5 cDistantArea]
+                   y_bar: 0
+                   z_bar: 0
+                       A: 12930
+                      Iy: 1.1768e+08
+                      Iz: 4.8184e+07
+                     Iyz: 4.4857e+07
 
 </pre>
 <p class="footer">
 <br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024a</a>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
 <br>
 </p>
 </div>
@@ -178,16 +168,10 @@ oSec2 =
 ##### SOURCE BEGIN #####
 clearvars
 
-% All properties are in mm
-
-%% Example 5 (double symmetric cross-section)
-A1=1450;Iy1=0.278;Iz1=0.799;Iyz1=-tan(2*(atan(.413)+pi/2))*(Iy1-Iz1)/2;y1=(203/2+27.4);z1=(254/2+7.7-14.7);
-A2=2610;Iy2=0.633;Iz2=15;Iyz2=0;y2=0;z2=254/2+7.7-14.1;
-A4=4810;Iy4=51.2;Iz4=2.8;Iyz4=0;y4=0;z4=0;
+componentProperties_script  % Basic areas
 
 %%
-% <<../CompositeSection_sol.svg>>
-
+% <<../../../../AnalysisOfStructures-II/Lectures/DoubleSymm-sol.svg>>
 A_vec=[A1,A2,A1,A4,A1,A2,A1];
 Iy_vec=[Iy1,Iy2,Iy1,Iy4,Iy1,Iy2,Iy1];
 Iz_vec=[Iz1,Iz2,Iz1,Iz4,Iz1,Iz2,Iz1];
@@ -198,19 +182,22 @@ z_hat_vec=[z1,z2,z1,z4,-z1,-z2,-z1];
 oSec1=cCmAr(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec) %#ok<*NOPTS>
 
 %%
-% <<../DoubleSymm-sol.svg>>
+% <<../../../../AnalysisOfStructures-II/Lectures/CompositeSection_sol.svg>>
 
-A_vec=[A1,A2,A1,A4,A1,A2,A1];
-Iy_vec=[Iy1,Iy2,Iy1,Iy4,Iy1,Iy2,Iy1];
-Iz_vec=[Iz1,Iz2,Iz1,Iz4,Iz1,Iz2,Iz1];
-Iyz_vec=[Iyz1,Iyz2,-Iyz1,Iyz4,Iyz1,-Iyz2,-Iyz1];
-y_hat_vec=[y1,y2,-y1,y4,-y1,y2,y1];
-z_hat_vec=[z1,z2,z1,z4,-z1,-z2,-z1];
+y22=0;z22=254/2+7.7-14.1;
+A5=4740;Iy5=37.9;Iz5=1.39;Iyz5=0;y5=-(73.4/2-15.7);z5=0;
 
-oSec1=cCmAr(A_vec,y_hat_vec,z_hat_vec,Iy_vec,Iz_vec,Iyz_vec) %#ok<*NOPTS>
+A0_vec=[A2,A5,A2];
+Iy0_vec=[Iy2,Iy5,Iy2];
+Iz0_vec=[Iz2,Iz5,Iz2];
+Iyz0_vec=[Iyz2,Iyz5,-Iyz2];
+y_hat0_vec=[y22,y5,y22];
+z_hat0_vec=[z22,z5,-z22];
+
+oSec2=cCmAr(A0_vec,y_hat0_vec,z_hat0_vec,Iy0_vec,Iz0_vec,Iyz0_vec) %#ok<*NOPTS>
 
 %%
-% <<../AntiSymm.svg>>
+% <<../../../../AnalysisOfStructures-II/Lectures/AntiSymm.svg>>
 
 ind_vec=[1,2,4,5,6];
 A_vec1=A_vec(ind_vec);
@@ -219,7 +206,7 @@ Iz_vec1=Iz_vec(ind_vec);
 Iyz_vec1=Iyz_vec(ind_vec);
 y_hat_vec1=y_hat_vec(ind_vec);
 z_hat_vec1=z_hat_vec(ind_vec);
-oSec2=cCmAr(A_vec1,y_hat_vec1,z_hat_vec1,Iy_vec1,Iz_vec1,Iyz_vec1)
+oSec3=cCmAr(A_vec1,y_hat_vec1,z_hat_vec1,Iy_vec1,Iz_vec1,Iyz_vec1)
 ##### SOURCE END #####
 -->
 </body>

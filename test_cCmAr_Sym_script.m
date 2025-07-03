@@ -1,7 +1,7 @@
 clc
 clearvars
 
-test_cCmAr_script   % oSec1 and oSec2
+test_cCmAr_script   % oSec1 and oSec3
 
 clc
 
@@ -12,17 +12,17 @@ disp(["Testing class cCmAr_Sym_y";"==========================================="]
 ind_vec=1:2;
 oSec_Sym=cCmAr_Sym_y(A0_vec(ind_vec),y_hat0_vec(ind_vec),z_hat0_vec(ind_vec),Iy0_vec(ind_vec),Iz0_vec(ind_vec),Iyz0_vec(ind_vec));
 
-A_err=oSec0.A-oSec_Sym.A %#ok<*NASGU,*NOPTS>
-Qy_hat_err=oSec0.calc_Qy_hat-oSec_Sym.calc_Qy_hat
-Qz_hat_err=oSec0.calc_Qz_hat-oSec_Sym.calc_Qz_hat
-y_bar_err=oSec0.y_bar-oSec_Sym.y_bar
-z_bar_err=oSec0.z_bar-oSec_Sym.z_bar
-Iy_hat_err=oSec0.calc_Iy_hat-oSec_Sym.calc_Iy_hat
-Iz_hat_err=oSec0.calc_Iz_hat-oSec_Sym.calc_Iz_hat
-Iyz_hat_err=oSec0.calc_Iyz_hat-oSec_Sym.calc_Iyz_hat
-Iy_err=oSec0.Iy-oSec_Sym.Iy
-Iz_err=oSec0.Iz-oSec_Sym.Iz
-Iyz_err=oSec0.Iyz-oSec_Sym.Iyz
+A_err=oSec2.A-oSec_Sym.A %#ok<*NASGU,*NOPTS>
+Qy_hat_err=oSec2.calc_Qy_hat-oSec_Sym.calc_Qy_hat
+Qz_hat_err=oSec2.calc_Qz_hat-oSec_Sym.calc_Qz_hat
+y_bar_err=oSec2.y_bar-oSec_Sym.y_bar
+z_bar_err=oSec2.z_bar-oSec_Sym.z_bar
+Iy_hat_err=oSec2.calc_Iy_hat-oSec_Sym.calc_Iy_hat
+Iz_hat_err=oSec2.calc_Iz_hat-oSec_Sym.calc_Iz_hat
+Iyz_hat_err=oSec2.calc_Iyz_hat-oSec_Sym.calc_Iyz_hat
+Iy_err=oSec2.Iy-oSec_Sym.Iy
+Iz_err=oSec2.Iz-oSec_Sym.Iz
+Iyz_err=oSec2.Iyz-oSec_Sym.Iyz
 
 %% Symmetric classes
 % <<../../../../AnalysisOfStructures-II/Lectures/DoubleSymm-sol.svg>>
@@ -61,14 +61,14 @@ disp(["Testing class "+className_str_vec(ii);"==================================
 ind_vec=indSym_cVec{ii};
 oSec_A_Sym=cSym_CompositeArea_cvec{ii}(A_vec(ind_vec),y_hat_vec(ind_vec),z_hat_vec(ind_vec),Iy_vec(ind_vec),Iz_vec(ind_vec),Iyz_vec(ind_vec));
 
-A_err=oSec2.A-oSec_A_Sym.A
-Qy_hat_err=oSec2.calc_Qy_hat-oSec_A_Sym.calc_Qy_hat
-Qz_hat_err=oSec2.calc_Qz_hat-oSec_A_Sym.calc_Qz_hat
-y_bar_err=oSec2.y_bar-oSec_A_Sym.y_bar
-z_bar_err=oSec2.z_bar-oSec_A_Sym.z_bar
-Iy_hat_err=oSec2.calc_Iy_hat-oSec_A_Sym.calc_Iy_hat
-Iz_hat_err=oSec2.calc_Iz_hat-oSec_A_Sym.calc_Iz_hat
-Iyz_hat_err=oSec2.calc_Iyz_hat-oSec_A_Sym.calc_Iyz_hat
-Iy_err=oSec2.Iy-oSec_A_Sym.Iy
-Iz_err=oSec2.Iz-oSec_A_Sym.Iz
-Iyz_err=oSec2.Iyz-oSec_A_Sym.Iyz
+A_err=oSec3.A-oSec_A_Sym.A
+Qy_hat_err=oSec3.calc_Qy_hat-oSec_A_Sym.calc_Qy_hat
+Qz_hat_err=oSec3.calc_Qz_hat-oSec_A_Sym.calc_Qz_hat
+y_bar_err=oSec3.y_bar-oSec_A_Sym.y_bar
+z_bar_err=oSec3.z_bar-oSec_A_Sym.z_bar
+Iy_hat_err=oSec3.calc_Iy_hat-oSec_A_Sym.calc_Iy_hat
+Iz_hat_err=oSec3.calc_Iz_hat-oSec_A_Sym.calc_Iz_hat
+Iyz_hat_err=oSec3.calc_Iyz_hat-oSec_A_Sym.calc_Iyz_hat
+Iy_err=oSec3.Iy-oSec_A_Sym.Iy
+Iz_err=oSec3.Iz-oSec_A_Sym.Iz
+Iyz_err=oSec3.Iyz-oSec_A_Sym.Iyz
